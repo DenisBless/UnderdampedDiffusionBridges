@@ -1,0 +1,3 @@
+_target_: algorithms.common.scheduler.get_linear_schedule
+total_steps: ${common.num_steps}
+min: 0.01

@@ -1,0 +1,32 @@
+name: student_t_mixture
+
+num_components: 10
+dim: 50
+has_entropy: True
+
+fn:
+  _target_: targets.student_t_mixture.StudentTMixtureModel
+  num_components: ${target.num_components}
+  dim: ${target.dim}
+  log_Z: 0.
+  can_sample: True
+  sample_bounds: None
+
+
+# Experiment-specific algorithm parameters
+# ----------------------------------------
+
+underdamped:
+  friction: 1.
+
+
+overdamped:
+  friction: 1.
+
+all: # Parameters that are shared between all algorithms
+  dt: 0.01
+  step_size: 5e-4
+  batch_size: 2000
+  init_std: 15
+  learn_prior: False
+  target_score_max_norm:

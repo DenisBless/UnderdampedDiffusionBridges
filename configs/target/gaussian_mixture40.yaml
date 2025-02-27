@@ -1,0 +1,32 @@
+name: gaussian_mixture40
+num_components: 40
+dim: 50
+has_entropy: True
+
+fn:
+  _target_: targets.gmm40.GMM40
+  num_components: ${target.num_components}
+  dim: ${target.dim}
+  log_Z: 0.
+  can_sample: True
+  sample_bounds: None
+  loc_scaling: 40
+  scale_scaling: 1
+
+# Experiment-specific algorithm parameters
+# ----------------------------------------
+
+underdamped:
+  friction: 1.
+
+
+overdamped:
+  friction: 1.
+
+all: # Parameters that are shared between all algorithms
+  dt: 0.5
+  step_size: 5e-4
+  batch_size: 2000
+  init_std: 40
+  learn_prior: False
+  target_score_max_norm:

@@ -1,0 +1,43 @@
+# @package _global_
+defaults:
+  - target: funnel
+  - algorithm: dbs_ud
+  - setup
+  - _self_
+
+seed: 0
+log_dir: logs/${algorithm.name}_${target.name}_${target.dim}D_${seed}_${now:%Y-%m-%d}/${now:%H-%M-%S}
+#use_jit: False  # Disable jit for better debugging
+use_jit: True
+eval_samples: 2000
+n_evals: 100
+moving_average:
+  use_ma: True
+  window_size: 5
+discrepancies: [sd] #[sd, mmd]
+compute_emc: True
+use_wandb: False
+verbose: True
+visualize_samples: True
+save_samples: True
+
+common:
+  loss: "elbo"  # Currently only KL is properly implemented!
+  step_size: ${target.all.step_size}
+  step_size_betas: ${target.all.step_size}
+  batch_size: ${target.all.batch_size}
+  iters: 10000
+  num_steps: 128
+  grad_clip: 1.
+  use_path_gradient: False
+  use_target_score: False
+  target_score_max_norm: ${target.all.target_score_max_norm}
+  dt: ${target.all.dt}
+  learn_dt: True
+  per_step_dt: False
+  per_dim_friction: True
+
+  # Related to the learning rate scheduler
+  use_step_size_scheduler: True
+  warmup: const
+  warmup_iters: 60_000

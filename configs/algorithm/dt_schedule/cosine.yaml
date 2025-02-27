@@ -1,0 +1,5 @@
+_target_: algorithms.common.scheduler.get_cosine_schedule
+total_steps: ${common.num_steps}
+min: 0.01
+s: 0.008
+pow: 2

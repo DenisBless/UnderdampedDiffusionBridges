@@ -1,0 +1,27 @@
+name: sonar
+dim: 61
+has_entropy: False
+
+fn:
+  _target_: targets.sonar.Sonar
+  log_Z:
+  can_sample: False
+  sample_bounds: None
+
+# Experiment-specific algorithm parameters
+# ----------------------------------------
+
+underdamped:
+  friction: 1.
+
+
+overdamped:
+  friction: 1.
+
+all: # Parameters that are shared between all algorithms
+  dt: 0.01
+  step_size: 5e-4
+  batch_size: 2000
+  init_std: 1
+  learn_prior: True
+  target_score_max_norm:

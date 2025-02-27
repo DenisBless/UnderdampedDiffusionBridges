@@ -1,0 +1,13 @@
+# Unadjusted Langevin Annealing (ULA)
+name: ula
+underdamped: False
+integrator: EM
+init_std: ${target.all.init_std}
+friction: ${target.overdamped.friction}
+learn_prior: ${target.all.learn_prior}
+learn_betas: True
+learn_friction: True
+learn_mass_matrix: False
+
+defaults:
+  - dt_schedule: cosine

@@ -1,0 +1,19 @@
+# Controlled Monte Carlo Diffusions (CMCD)
+name: cmcd
+underdamped: False
+integrator: EM
+init_std: ${target.all.init_std}
+friction: ${target.underdamped.friction}
+learn_prior: ${target.all.learn_prior}
+learn_betas: True
+learn_friction: True
+learn_mass_matrix: False
+
+
+defaults:
+  - model: pisgrad_net
+  - dt_schedule: cosine
+
+model:
+  bias_init: 0.
+  weight_init: 1e-8

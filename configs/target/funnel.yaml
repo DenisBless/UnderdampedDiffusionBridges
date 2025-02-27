@@ -1,0 +1,28 @@
+name: funnel
+dim: 10
+has_entropy: False
+
+fn:
+  _target_: targets.funnel.Funnel
+  dim: ${target.dim}
+  log_Z: 0.
+  can_sample: True
+  sample_bounds: [-30, 30]
+
+# Experiment-specific algorithm parameters
+# ----------------------------------------
+
+underdamped:
+  friction: 1.
+
+
+overdamped:
+  friction: 1.
+
+all: # Parameters that are shared between all algorithms
+  dt: 0.01
+  step_size: 5e-4
+  batch_size: 2000
+  init_std: 1
+  learn_prior: True
+  target_score_max_norm:
